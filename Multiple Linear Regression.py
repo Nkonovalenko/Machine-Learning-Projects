@@ -18,6 +18,7 @@ cdf = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY',
 cdf.head(9)
 
 # Plot emission values with respect to Engine size:
+plt.title('All Data')
 plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
 plt.ylabel("Emission")
@@ -29,7 +30,8 @@ train = cdf[msk]
 test = cdf[~msk]
 
 # Train data distribution
+plt.title('Train Data')
 plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
 plt.ylabel("Emission")
-plt.show
+plt.show()
