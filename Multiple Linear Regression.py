@@ -1,8 +1,11 @@
+#import matplotlib
+#matplotlib.use("agg")
 import matplotlib.pyplot as plt
+
 import pandas as pd
 import pylab as pl
 import numpy as np
-%matplotlib inline
+#%matplotlib inline
 
 # Read in the data
 df = pd.read_csv("FuelConsumption.csv")
@@ -20,3 +23,13 @@ plt.xlabel("Engine Size")
 plt.ylabel("Emission")
 plt.show()
 
+# Train/Test Split
+msk = np.random.rand(len(df)) < 0.8
+train = cdf[msk]
+test = cdf[~msk]
+
+# Train data distribution
+plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
+plt.xlabel("Engine Size")
+plt.ylabel("Emission")
+plt.show
