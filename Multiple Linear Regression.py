@@ -1,10 +1,10 @@
 #import matplotlib
 #matplotlib.use("agg")
 import matplotlib.pyplot as plt
-
 import pandas as pd
 import pylab as pl
 import numpy as np
+from sklearn import linear_model
 #%matplotlib inline
 
 # Read in the data
@@ -17,7 +17,6 @@ df.head()
 cdf = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY','FUELCONSUMPTION_COMB','CO2EMISSIONS']]
 cdf.head(9)
 
-# Plot emission values with respect to Engine size:
 plt.title('All Data')
 plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
@@ -35,3 +34,13 @@ plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
 plt.ylabel("Emission")
 plt.show()
+
+
+# Multiple Regression Model
+regr = linear_model.LinearRegression()
+x = np.asanyarray(train[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB']])
+y = np.asanyarray(train[['CO2EMISSIONS']])
+regr.fit (x,y)
+
+# The coefficients
+print('coefficients: ', regr.coef_)
