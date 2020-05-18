@@ -58,14 +58,14 @@ print("Variance score: %.2f" % regr.score(x,y))
 
 
 # Multiple Regression Model based on CITY_Fuel and HWY_Fuel
-x = np.asanyarray(train[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+x = np.asanyarray(train[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
 y = np.asanyarray(train[['CO2EMISSIONS']])
 regr.fit (x,y)
 print('coefficients: ', regr.coef_)
 
 # Prediction based on City & Hwy Fuel
-y_hat = regr.predict(test[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
-x = np.asanyarray(test[['FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+y_hat = regr.predict(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
+x = np.asanyarray(test[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_CITY','FUELCONSUMPTION_HWY']])
 y = np.asanyarray(test[['CO2EMISSIONS']])
 print("Residual sum of squares: %.2f" % np.mean((y_hat - y) ** 2))
 print("Variance score: %.2f" % regr.score(x,y))
