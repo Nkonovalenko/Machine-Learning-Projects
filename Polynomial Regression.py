@@ -41,3 +41,12 @@ poly = PolynomialFeatures(degree = 2)
 train_x_poly = poly.fit_transform(train_x)
 #print(train_x_poly)
 
+# Solve using linear Regression
+clf = linear_model.LinearRegression()
+train_y_ = clf.fit(train_x_poly, train_y)
+
+# Print the coefficients
+print("Coefficients: ", clf.coef_)
+print("Intercept: ", clf.intercept_)
+
+
