@@ -33,5 +33,8 @@ train_x = np.asanyarray(train[['ENGINESIZE']])
 train_y = np.asanyarray(train[['CO2EMISSIONS']])
 
 # Test data
+test_x = np.asanyarray(test[['ENGINESIZE']])
+test_y = np.asanyarray(test[['CO2EMISSIONS']])
 
+# Set up Polynomial Preprocessing
 
