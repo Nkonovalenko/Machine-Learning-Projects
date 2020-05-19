@@ -9,3 +9,14 @@ df = pd.read_csv("FuelConsumption.csv")
 
 # look at dataset
 df.head()
+
+# Set up categories
+cdf = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB','CO2EMISSIONS']]
+cdf.head(9)
+
+# Plot Emission values with respect to Engine Size:
+plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
+plt.xlabel("Engine Size")
+plt.ylabel("CO2 Emissions")
+plt.show
+
