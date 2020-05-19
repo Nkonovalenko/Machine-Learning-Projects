@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-import numpy as numpy
+import numpy as np
 import pandas as pd
+from scipy.optimize import curve_fit
 #%matplotlib inline			# This line is needed for Jupyter Notebook
 
 # Read in the data
@@ -14,10 +15,32 @@ plt.plot(x_data, y_data, 'ro')
 plt.ylabel('GDP')
 plt.xlabel('Year')
 plt.title("Data Plot")
-plt.show()
+#plt.show()
 
 # Buidling a logarithmic model
 
 def sigmoid(x, Beta_1, Beta_2):
 	y = 1 / (1 + np.exp(-Beta_1*(x-Beta_2)))
 	return y
+
+# Sample sigmoid line that might fit with the data:
+beta_1 = 0.10
+beta_2 = 1990.0
+
+# Logistic function
+Y_pred = sigmoid(x_data, beta_1, beta_2)
+
+# Plot initial prediction against datapoints
+plt.plot(x_data, Y_pred*15000000000000.)
+plt.plot(x_data, y_data, 'ro')
+plt.show()
+
+# Normalize the data
+xdata = x_data/max(x_data)
+ydata = y_data/max(y_data)
+
+# Optimize parameters for fit line
+popt, pcov = curve_fit(sigmoid, xdata, ydata)
+
+# print final parameters
+print(" beta_1 = %f, beta_2 = %f" % (popt[0], popt[1]))
