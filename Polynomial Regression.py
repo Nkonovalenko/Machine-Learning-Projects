@@ -20,3 +20,10 @@ plt.xlabel("Engine Size")
 plt.ylabel("CO2 Emissions")
 plt.show()
 
+# Creating train/test split
+msk = np.random.rand(len(df)) < 0.8
+train = cdf[msk]
+test = cdf[~msk]
+
+
+
