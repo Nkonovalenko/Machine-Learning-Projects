@@ -44,3 +44,16 @@ popt, pcov = curve_fit(sigmoid, xdata, ydata)
 
 # print final parameters
 print(" beta_1 = %f, beta_2 = %f" % (popt[0], popt[1]))
+
+# Plot the regression model
+x = np.linspace(1960, 2015, 55)
+x = x/max(x)
+plt.figure(figsize=(8,5))
+y = sigmoid(x, *popt)
+plt.plot(xdata, ydata, 'ro', label='data')
+plt.plot(x,y, linewidth=3.0, label='fit')
+plt.legend(loc='best')
+plt.ylabel('GDP')
+plt.xlabel('Year')
+plt.title('Data with Log Fit')
+plt.show()
