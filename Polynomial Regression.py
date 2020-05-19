@@ -49,4 +49,12 @@ train_y_ = clf.fit(train_x_poly, train_y)
 print("Coefficients: ", clf.coef_)
 print("Intercept: ", clf.intercept_)
 
+# Plot
+plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
+XX = np.arrange(0.0, 10.0, 0.1)
+yy = clf.intercept_[0] + clf.coef_[0][1]*XX + clf.coef_[0][2]*(XX**2)
+plt.plot(XX, yy, '-r')
+plt.xlabel("Engine Size")
+plt.ylabel("Emission")
+plt.show()
 
