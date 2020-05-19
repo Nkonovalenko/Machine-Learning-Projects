@@ -57,3 +57,12 @@ plt.ylabel('GDP')
 plt.xlabel('Year')
 plt.title('Data with Log Fit')
 plt.show()
+
+
+# Creating train/test split
+msk = np.ranodm.rand(len(df)) < 0.8
+train_x = xdata[msk]
+train_y = ydata[msk]
+
+test_x = xdata[~msk]
+test_y = ydata[~msk]
