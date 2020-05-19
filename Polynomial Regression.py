@@ -46,6 +46,7 @@ clf = linear_model.LinearRegression()
 train_y_ = clf.fit(train_x_poly, train_y)
 
 # Print the coefficients
+print("-------------- 2nd Degree Model --------------")
 print("Coefficients: ", clf.coef_)
 print("Intercept: ", clf.intercept_)
 
@@ -62,12 +63,13 @@ plt.show()
 # Evaluation of 2nd degree Model
 test_x_poly = poly.fit_transform(test_x)
 test_y_ = clf.predict(test_x_poly)
-
 print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
 print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
 print("R2-Score: %.2f" % r2_score(test_y_, test_y))
-
+print("------------------------------------------")
 # Set up Polynomial Preprocessing, 3rd Degree Polynomial
+print("\n\n")
+print("-------------- 3rd Degree Model --------------")
 poly = PolynomialFeatures(degree = 3)
 train_x_poly = poly.fit_transform(train_x)
 clf = linear_model.LinearRegression()
@@ -92,3 +94,4 @@ test_y_ = clf.predict(test_x_poly)
 print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
 print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
 print("R2-Score: %.2f" % r2_score(test_y_, test_y))
+print("------------------------------------------")
