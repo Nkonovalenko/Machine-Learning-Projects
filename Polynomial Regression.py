@@ -5,7 +5,7 @@ import numpy as np
 #%matplotlib inline       # This line is needed for Jupyter Notebook
 
 # Read in the data
-df = pd.read_csv("FuelConsumption.csv")
+df = pd.read_csv("FuelConsumption.csv",error_bad_lines=False)
 
 # look at dataset
 df.head()
@@ -18,5 +18,5 @@ cdf.head(9)
 plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
 plt.ylabel("CO2 Emissions")
-plt.show
+plt.show()
 
