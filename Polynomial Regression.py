@@ -21,7 +21,7 @@ cdf.head(9)
 plt.scatter(cdf.ENGINESIZE, cdf.CO2EMISSIONS, color='blue')
 plt.xlabel("Engine Size")
 plt.ylabel("CO2 Emissions")
-plt.show()
+#plt.show()
 
 # Creating train/test split
 msk = np.random.rand(len(df)) < 0.8
@@ -36,5 +36,8 @@ train_y = np.asanyarray(train[['CO2EMISSIONS']])
 test_x = np.asanyarray(test[['ENGINESIZE']])
 test_y = np.asanyarray(test[['CO2EMISSIONS']])
 
-# Set up Polynomial Preprocessing
+# Set up Polynomial Preprocessing, 2nd degree Polynomial
+poly = PolynomialFeatures(degree = 2)
+train_x_poly = poly.fit_transform(train_x)
+#print(train_x_poly)
 
