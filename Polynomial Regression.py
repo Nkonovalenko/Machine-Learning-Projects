@@ -59,7 +59,7 @@ plt.xlabel("Engine Size")
 plt.ylabel("Emission")
 plt.show()
 
-# Evaluation of Model
+# Evaluation of 2nd degree Model
 test_x_poly = poly.fit_transform(test_x)
 test_y_ = clf.predict(test_x_poly)
 
@@ -84,3 +84,11 @@ plt.plot(XX, yy, '-r')
 plt.xlabel("EngineSize")
 plt.ylabel("Emission")
 plt.show()
+
+# Evaluation of 3rd degree Model
+test_x_ploy = poly.fit_transform(test_x)
+test_y_ = clf.predict(test_x_poly)
+
+print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
+print("R2-Score: %.2f" % r2_score(test_y_, test_y))
