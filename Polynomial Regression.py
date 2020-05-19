@@ -1,3 +1,9 @@
+# This project is to look at the differences between 2nd and 3rd degree 
+# polynomial regression models for CO2 Emission prediction
+
+# Conclusion: 2nd & 3rd degree have the same R2-score
+# with the given data set
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import pylab as pl
@@ -70,17 +76,17 @@ print("------------------------------------------")
 # Set up Polynomial Preprocessing, 3rd Degree Polynomial
 print("\n\n")
 print("-------------- 3rd Degree Model --------------")
-poly = PolynomialFeatures(degree = 3)
-train_x_poly = poly.fit_transform(train_x)
-clf = linear_model.LinearRegression()
-train_y_ = clf.fit(train_x_poly, train_y)
-print("Coefficients: ", clf.coef_)
-print("Intercept: ", clf.intercept_)
+poly3 = PolynomialFeatures(degree=3)
+train_x_poly3 = poly3.fit_transform(train_x)
+clf3 = linear_model.LinearRegression()
+train_y3_ = clf3.fit(train_x_poly3, train_y)
+print("Coefficients: ", clf3.coef_)
+print("Intercept: ", clf3.intercept_)
 
 # Plot
 plt.scatter(train.ENGINESIZE, train.CO2EMISSIONS, color='blue')
 XX = np.arange(0.0, 10.0, 0.1)
-yy = clf.intercept_[0] + clf.coef_[0][1]*XX + clf.coef_[0][2]*(XX**2) + clf.coef_[0][3]*(XX**3)
+yy = clf3.intercept_[0] + clf3.coef_[0][1]*XX + clf3.coef_[0][2]*(XX**2) + clf3.coef_[0][3]*(XX**3)
 plt.title("3rd Degree Polynomial")
 plt.plot(XX, yy, '-r')
 plt.xlabel("EngineSize")
@@ -88,10 +94,10 @@ plt.ylabel("Emission")
 plt.show()
 
 # Evaluation of 3rd degree Model
-test_x_ploy = poly.fit_transform(test_x)
-test_y_ = clf.predict(test_x_poly)
+test_x_poly3 = poly3.fit_transform(test_x)
+test_y3_ = clf3.predict(test_x_poly3)
 
-print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y_ - test_y)))
-print("Residual sum of squares (MSE): %.2f" % np.mean((test_y_ - test_y) ** 2))
-print("R2-Score: %.2f" % r2_score(test_y_, test_y))
+print("Mean absolute error: %.2f" % np.mean(np.absolute(test_y3_ - test_y)))
+print("Residual sum of squares (MSE): %.2f" % np.mean((test_y3_ - test_y) ** 2))
+print("R2-Score: %.2f" % r2_score(test_y3_, test_y))
 print("------------------------------------------")
