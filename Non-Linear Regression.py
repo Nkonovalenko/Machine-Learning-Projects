@@ -14,5 +14,10 @@ plt.plot(x_data, y_data, 'ro')
 plt.ylabel('GDP')
 plt.xlabel('Year')
 plt.title("Data Plot")
-
 plt.show()
+
+# Buidling a logarithmic model
+
+def sigmoid(x, Beta_1, Beta_2):
+	y = 1 / (1 + np.exp(-Beta_1*(x-Beta_2)))
+	return y
